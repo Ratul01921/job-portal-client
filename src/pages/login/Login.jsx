@@ -1,19 +1,19 @@
 import Lottie from 'lottie-react';
 import React, { useContext } from 'react';
-import registerLottieData from '../../assets/lottie/register.json'
 import AuthContext from '../../context/authContext/AuthContext';
+import loginLottieData from '../../../src/assets/lottie/login.json'
 
-const Register = () => {
-    const {createUser} = useContext(AuthContext)
+const Login = () => {
+    const {loginUser} = useContext(AuthContext)
 
-    const handleRegister = e => {
+    const handleLogin = e => {
         e.preventDefault();
         const from = e.target;
         const email = from.email.value;
         const password = from.password.value;
         console.log(email, password)
 
-        createUser(email, password)
+        loginUser(email, password)
         .then(result => {
             console.log(result.user)
 
@@ -26,11 +26,11 @@ const Register = () => {
         <div className="hero bg-base-200 min-h-screen">
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="text-center lg:text-left w-2/4">
-                   <Lottie animationData={registerLottieData}></Lottie>
+                    <Lottie animationData={loginLottieData}></Lottie>
                 </div>
                 <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-                <h1 className="text-5xl ml-8 mt-4 font-bold">Register now!</h1>
-                    <form onSubmit={handleRegister} className="card-body">
+                    <h1 className="text-5xl ml-8 mt-4 font-bold">Login now!</h1>
+                    <form onSubmit={handleLogin} className="card-body">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
@@ -42,12 +42,9 @@ const Register = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input type="password" name='password' placeholder="password" className="input input-bordered" required />
-                            <label className="label">
-                                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                            </label>
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn btn-primary">Register</button>
+                            <button className="btn btn-primary">Login</button>
                         </div>
                     </form>
                 </div>
@@ -56,4 +53,4 @@ const Register = () => {
     );
 };
 
-export default Register;
+export default Login;
