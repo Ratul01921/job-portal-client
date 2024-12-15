@@ -1,16 +1,16 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import AuthContext from '../../context/authContext/AuthContext';
 import logo from '../../assets/logoimg.png'
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext)
     const links = <>
-        <li><a>Item 1</a></li>
-        <li><a>Item 3</a></li>
+        <NavLink className='btn' to={'/'}><button >home</button></NavLink> 
+        <NavLink className='btn' to={'/'}><button >home</button></NavLink>
     </>
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-base-100 w-11/12 mx-auto">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

@@ -2,9 +2,9 @@ import Lottie from 'lottie-react';
 import React, { useContext } from 'react';
 import AuthContext from '../../context/authContext/AuthContext';
 import loginLottieData from '../../../src/assets/lottie/login.json'
-
+import GoogleSignIn from '../shared/GoogleSignIn';
 const Login = () => {
-    const {loginUser} = useContext(AuthContext)
+    const {loginUser, setUser} = useContext(AuthContext)
 
     const handleLogin = e => {
         e.preventDefault();
@@ -15,7 +15,9 @@ const Login = () => {
 
         loginUser(email, password)
         .then(result => {
-            console.log(result.user)
+           user =(result.user)
+           setUser(user)
+
 
         })
         .catch(error => {
@@ -46,8 +48,15 @@ const Login = () => {
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Login</button>
                         </div>
+                        
+                        
+                            
+                        
                     </form>
+                    <div className="divider">OR</div>
+                    <GoogleSignIn></GoogleSignIn>
                 </div>
+                    
             </div>
         </div>
     );
