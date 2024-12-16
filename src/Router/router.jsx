@@ -6,6 +6,8 @@ import Register from "../pages/register/Register";
 import Home from "../Components/Home";
 import Login from "../pages/login/Login";
 import JobDetails from "../pages/jobDetails/JobDetails";
+import PrivetRouter from "./PrivetRouter";
+import JobApply from "../pages/JobApply";
 
   const router = createBrowserRouter([
     {
@@ -19,9 +21,13 @@ import JobDetails from "../pages/jobDetails/JobDetails";
         },
         {
           path: '/jobs/:id',
-          element: <JobDetails></JobDetails>,
+          element: <PrivetRouter><JobDetails></JobDetails></PrivetRouter>,
           loader: ({params})=> fetch(`http://localhost:5555/jobs/${params.id}`)
           
+        },
+        {
+          path: '/jobApply/:id',
+          element: <PrivetRouter><JobApply></JobApply></PrivetRouter>
         },
         {
             path: '/register',

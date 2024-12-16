@@ -3,20 +3,25 @@ import React, { useContext } from 'react';
 import AuthContext from '../../context/authContext/AuthContext';
 import loginLottieData from '../../../src/assets/lottie/login.json'
 import GoogleSignIn from '../shared/GoogleSignIn';
+import { useLocation, useNavigate } from 'react-router-dom';
 const Login = () => {
     const {loginUser, setUser} = useContext(AuthContext)
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location?.state || '/';
 
     const handleLogin = e => {
         e.preventDefault();
-        const from = e.target;
-        const email = from.email.value;
-        const password = from.password.value;
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
         console.log(email, password)
 
         loginUser(email, password)
         .then(result => {
            user =(result.user)
            setUser(user)
+           navigate(from)
 
 
         })
