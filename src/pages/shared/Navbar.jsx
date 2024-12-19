@@ -6,9 +6,10 @@ import logo from '../../assets/logoimg.png'
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext)
     const links = <>
-        <NavLink className='btn' to={'/'}><button >home</button></NavLink> 
-        <NavLink className='btn' to={'/myApplications'}><button >My Applications</button></NavLink>
-        <NavLink className='btn' to={'/addJob'}><button >Add A Job</button></NavLink>
+        <NavLink className='btn' to={'/'}>home</NavLink> 
+        <NavLink className='btn' to={'/myApplications'}>My Applications</NavLink>
+        <NavLink className='btn' to={'/addJob'}>Add A Job</NavLink>
+        <NavLink className='btn' to={'/myPostedJobs'}>My Posted Job</NavLink>
     </>
     return (
         <div className="navbar bg-base-100 w-11/12 mx-auto">
