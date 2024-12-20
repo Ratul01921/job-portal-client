@@ -4,8 +4,9 @@ import AuthContext from '../../context/authContext/AuthContext';
 import loginLottieData from '../../../src/assets/lottie/login.json'
 import GoogleSignIn from '../shared/GoogleSignIn';
 import { useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 const Login = () => {
-    const {loginUser, setUser} = useContext(AuthContext)
+    const {loginUser} = useContext(AuthContext)
     const navigate = useNavigate()
     const location = useLocation()
     const from = location?.state || '/';
@@ -15,13 +16,17 @@ const Login = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password)
+        // console.log(email, password)
 
         loginUser(email, password)
         .then(result => {
-           user =(result.user)
-           setUser(user)
-           navigate(from)
+           console.log(result.user.email)
+        //    navigate(from)
+        const user = {email: result.user.email}
+        axios.post('http://localhost:5555/jwt', user, {withCredentials: true})
+        .then(res => {
+            console.log(res.data)
+        })
 
 
         })
